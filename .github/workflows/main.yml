@@ -17,8 +17,8 @@ jobs:
         port: 22
         script: |
           cd /Deloy_Test/Deloy_CICD
-          git fetch origin
           git checkout main
+          git fetch origin
           git pull
           docker build -t blog-starter ../
           docker stop blog-starter-container || true
