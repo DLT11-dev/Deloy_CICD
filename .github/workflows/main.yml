@@ -1,0 +1,27 @@
+name: Next Deploy CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        script: |
+          cd Deloy_Test/Deloy_CICD
+          git fetch origin
+          git checkout main
+          git pull
+          docker build -t blog-starter .
+          docker stop blog-starter-container || true
+          docker rm blog-starter-container || true
+          docker run -d -p 4000:3000 --name blog-starter-container blog-starter
+          
