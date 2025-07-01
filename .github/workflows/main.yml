@@ -16,7 +16,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd Deloy_Test/Deloy_CICD
+          cd /Deloy_Test/Deloy_CICD
           git fetch origin
           git checkout main
           git pull
