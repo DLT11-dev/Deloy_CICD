@@ -13,7 +13,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY_FOR_VPS }}
         port: 22
         script: |
           cd /Deloy_Test/Deloy_CICD
